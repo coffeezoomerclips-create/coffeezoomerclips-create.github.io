@@ -109,7 +109,7 @@
         }
         .sound-btn:hover { background-color: #bf94ff; color: #0e0e10; }
         .sound-btn:active { transform: scale(0.95); }
-        .shuffle-btn { padding: 8px 15px; font-size: 0.8em; } /* Smaller button for the vault */
+        .shuffle-btn { padding: 8px 15px; font-size: 0.8em; }
 
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; padding-bottom: 30px; }
         .social-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 5px; text-decoration: none; color: white; font-family: sans-serif; font-weight: bold; transition: transform 0.2s, opacity 0.2s; }
@@ -138,7 +138,7 @@
     <!-- The Randomized Vault Video Grid -->
     <div class="vault-container">
         <div class="vault-header">
-            <div class="vault-title"><i class="fa-solid fa-film"></i> The Tilt Vault</div>
+            <div class="vault-title"><i class="fa-solid fa-film"></i> The Reformed Vault</div>
             <button class="sound-btn shuffle-btn" onclick="shuffleVault()"><i class="fa-solid fa-shuffle"></i> Shuffle</button>
         </div>
         <div class="vault-grid">
@@ -149,7 +149,7 @@
     </div>
 
     <div class="soundboard-container">
-        <div class="soundboard-title"><i class="fa-solid fa-volume-high"></i> The Tilt Board</div>
+        <div class="soundboard-title"><i class="fa-solid fa-volume-high"></i> The Reformed Board</div>
         <audio id="audio-squeak" src="squeak.mp3"></audio>
         <audio id="audio-slam" src="slam.mp3"></audio>
         <audio id="audio-reformed" src="reformed.mp3"></audio>
@@ -200,16 +200,13 @@
         ];
 
         function shuffleVault() {
-            // Copy the array and shuffle it randomly
             let shuffled = [...clipPool].sort(() => 0.5 - Math.random());
             
-            // Assign the top 3 shuffled videos to the iframes
             document.getElementById('vid1').src = "https://www.youtube.com/embed/" + shuffled[0];
             document.getElementById('vid2').src = "https://www.youtube.com/embed/" + shuffled[1];
             document.getElementById('vid3').src = "https://www.youtube.com/embed/" + shuffled[2];
         }
 
-        // Run the shuffle function automatically when the page first loads
         window.onload = shuffleVault;
     </script>
 
