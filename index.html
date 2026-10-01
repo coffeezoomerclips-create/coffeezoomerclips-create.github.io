@@ -19,8 +19,27 @@
             filter: drop-shadow(0px 0px 12px rgba(191, 148, 255, 0.3));
         }
         h1 { color: #bf94ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
-        .quote { color: #adadb8; font-style: italic; font-size: 0.95em; margin-bottom: 10px; }
-        .disclaimer { font-size: 0.7em; color: #555; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Interactive Quote Styles */
+        .quote { 
+            color: #adadb8; 
+            font-style: italic; 
+            font-size: 0.95em; 
+            margin-bottom: 5px; 
+            cursor: pointer;
+            transition: color 0.2s;
+            user-select: none;
+        }
+        .quote:hover { color: #bf94ff; }
+        .quote-hint { 
+            font-size: 0.6em; 
+            color: #555; 
+            text-transform: uppercase; 
+            margin-bottom: 30px; 
+            letter-spacing: 1px;
+        }
+
+        .disclaimer { font-size: 0.7em; color: #555; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         
         .embed-wrapper {
             display: flex;
@@ -30,7 +49,6 @@
         }
         iframe { border: none; border-radius: 8px; }
         
-        /* Soundboard Styles */
         .soundboard-container {
             margin: 40px auto;
             max-width: 600px;
@@ -104,23 +122,22 @@
 </head>
 <body>
 
-    <!-- Main Mascot Logo -->
     <img src="chibi.png" alt="CoffeeZoomer Mascot" class="logo">
-
     <h1>CoffeeZoomer</h1>
-    <div class="quote">"reminds of facebook 2004 when it started xD" - Ricky</div>
+    
+    <!-- The Interactive Quote Feature -->
+    <div class="quote" id="quote-box" onclick="generateQuote()">"reminds of facebook 2004 when it started xD" - Ricky</div>
+    <div class="quote-hint">(Click to cycle quotes)</div>
+    
     <div class="disclaimer">Independent 3rd-party archive. Administrator disclaims all legal liability.</div>
 
     <div class="embed-wrapper">
-        <!-- Twitch Video Player -->
         <iframe
             src="https://player.twitch.tv/?channel=coffeezoomer&parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io"
             height="540"
             width="960"
             allowfullscreen="true">
         </iframe>
-
-        <!-- Twitch Live Chat -->
         <iframe
             src="https://www.twitch.tv/embed/coffeezoomer/chat?parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io&darkpopout"
             height="540"
@@ -128,16 +145,13 @@
         </iframe>
     </div>
 
-    <!-- The Tilt Soundboard Section -->
     <div class="soundboard-container">
         <div class="soundboard-title"><i class="fa-solid fa-volume-high"></i> The Tilt Board</div>
         
-        <!-- Hidden Audio Files -->
         <audio id="audio-squeak" src="squeak.mp3"></audio>
         <audio id="audio-slam" src="slam.mp3"></audio>
         <audio id="audio-reformed" src="reformed.mp3"></audio>
 
-        <!-- Visible Buttons -->
         <div class="soundboard-grid">
             <button class="sound-btn" onclick="playSound('audio-squeak')">🦆 Censor Squeak</button>
             <button class="sound-btn" onclick="playSound('audio-slam')">💥 Desk Slam</button>
@@ -152,13 +166,30 @@
         <a href="https://instagram.com/coffeezoomerclips" target="_blank" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
     </div>
 
-    <!-- JavaScript to trigger the sounds -->
     <script>
+        // Soundboard logic
         function playSound(audioId) {
             var sound = document.getElementById(audioId);
-            // This line rewinds the sound to the start so you can spam click it
             sound.currentTime = 0; 
             sound.play();
+        }
+
+        // Quote Generator logic
+        const quotes = [
+            '"reminds of facebook 2004 when it started xD" - Ricky',
+            '"Five daggers on Nasus is a highly tactical investment." - Ricky',
+            '"This is the final account. Ranked at 30. #Reformed" - Ricky',
+            '"Has anyone checked THE BOYS server? He\'s been MIA for days." - Stream Chat',
+            '"[User has been suspended for 30 days]" - Twitch Staff',
+            '"Wait, was that a desk slam?" - Stream Chat'
+        ];
+
+        function generateQuote() {
+            const quoteBox = document.getElementById('quote-box');
+            // Pick a random number between 0 and the total number of quotes
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            // Replace the text on the screen with the newly selected quote
+            quoteBox.innerText = quotes[randomIndex];
         }
     </script>
 
