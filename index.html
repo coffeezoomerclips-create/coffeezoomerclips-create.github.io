@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CoffeeZoomer</title>
+    <style>
+        body {
+            background-color: #0e0e10;
+            color: #efeff1;
+            font-family: sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        h1 { color: #bf94ff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+        .disclaimer { font-size: 0.8em; color: #adadb8; margin-bottom: 30px; }
+        .embed-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        iframe { border: none; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>CoffeeZoomer</h1>
+    <div class="disclaimer">Independent 3rd-party archive. Administrator disclaims all legal liability.</div>
+
+    <div class="embed-wrapper">
+        <!-- Twitch Video Player -->
+        <iframe 
+            src="https://player.twitch.tv/?channel=coffeezoomer&parent=coffeezoomer.com" 
+            height="540" 
+            width="960" 
+            allowfullscreen="true">
+        </iframe>
+        
+        <!-- Twitch Live Chat -->
+        <iframe 
+            src="https://www.twitch.tv/embed/coffeezoomer/chat?parent=coffeezoomer.com&darkpopout" 
+            height="540" 
+            width="350">
+        </iframe>
+    </div>
+
+</body>
+</html>
