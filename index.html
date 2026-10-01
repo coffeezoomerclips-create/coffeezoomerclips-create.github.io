@@ -30,6 +30,48 @@
         }
         iframe { border: none; border-radius: 8px; }
         
+        /* Soundboard Styles */
+        .soundboard-container {
+            margin: 40px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #18181b;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        .soundboard-title {
+            color: #bf94ff;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .soundboard-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .sound-btn {
+            background-color: #2c2c35;
+            color: white;
+            border: 2px solid #bf94ff;
+            padding: 15px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            text-transform: uppercase;
+        }
+        .sound-btn:hover {
+            background-color: #bf94ff;
+            color: #0e0e10;
+        }
+        .sound-btn:active {
+            transform: scale(0.95);
+        }
+
         .social-links {
             display: flex;
             justify-content: center;
@@ -86,12 +128,39 @@
         </iframe>
     </div>
 
+    <!-- The Tilt Soundboard Section -->
+    <div class="soundboard-container">
+        <div class="soundboard-title"><i class="fa-solid fa-volume-high"></i> The Tilt Board</div>
+        
+        <!-- Hidden Audio Files -->
+        <audio id="audio-squeak" src="squeak.mp3"></audio>
+        <audio id="audio-slam" src="slam.mp3"></audio>
+        <audio id="audio-reformed" src="reformed.mp3"></audio>
+
+        <!-- Visible Buttons -->
+        <div class="soundboard-grid">
+            <button class="sound-btn" onclick="playSound('audio-squeak')">🦆 Censor Squeak</button>
+            <button class="sound-btn" onclick="playSound('audio-slam')">💥 Desk Slam</button>
+            <button class="sound-btn" onclick="playSound('audio-reformed')">😇 "I'm Reformed"</button>
+        </div>
+    </div>
+
     <div class="social-links">
         <a href="https://youtube.com/@coffeezoomerclips" target="_blank" class="social-btn youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
         <a href="https://tiktok.com/@coffeezoomerclips" target="_blank" class="social-btn tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
         <a href="https://x.com/caffeinatedtilt" target="_blank" class="social-btn twitter"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
         <a href="https://instagram.com/coffeezoomerclips" target="_blank" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
     </div>
+
+    <!-- JavaScript to trigger the sounds -->
+    <script>
+        function playSound(audioId) {
+            var sound = document.getElementById(audioId);
+            // This line rewinds the sound to the start so you can spam click it
+            sound.currentTime = 0; 
+            sound.play();
+        }
+    </script>
 
 </body>
 </html>
