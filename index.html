@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CoffeeZoomer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             background-color: #0e0e10;
@@ -21,6 +22,35 @@
             flex-wrap: wrap;
         }
         iframe { border: none; border-radius: 8px; }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            padding-bottom: 30px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-family: sans-serif;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+        .youtube { background-color: #FF0000; }
+        .tiktok { background-color: #111111; border: 1px solid #333; }
+        .twitter { background-color: #000000; border: 1px solid #333; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
     </style>
 </head>
 <body>
@@ -30,19 +60,26 @@
 
     <div class="embed-wrapper">
         <!-- Twitch Video Player -->
-        <iframe 
-            src="https://player.twitch.tv/?channel=coffeezoomer&parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io" 
-            height="540" 
-            width="960" 
+        <iframe
+            src="https://player.twitch.tv/?channel=coffeezoomer&parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io"
+            height="540"
+            width="960"
             allowfullscreen="true">
         </iframe>
-        
+
         <!-- Twitch Live Chat -->
-        <iframe 
-            src="https://www.twitch.tv/embed/coffeezoomer/chat?parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io&darkpopout" 
-            height="540" 
+        <iframe
+            src="https://www.twitch.tv/embed/coffeezoomer/chat?parent=coffeezoomer.com&parent=www.coffeezoomer.com&parent=coffeezoomerclips-create.github.io&darkpopout"
+            height="540"
             width="350">
         </iframe>
+    </div>
+
+    <div class="social-links">
+        <a href="https://youtube.com/@coffeezoomer" target="_blank" class="social-btn youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+        <a href="https://tiktok.com/@coffeezoomer" target="_blank" class="social-btn tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a href="https://x.com/coffeezoomer" target="_blank" class="social-btn twitter"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+        <a href="https://instagram.com/coffeezoomer" target="_blank" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
     </div>
 
 </body>
