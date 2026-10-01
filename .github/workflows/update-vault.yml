@@ -1,0 +1,32 @@
+name: Update The Reformed Vault
+
+on:
+  schedule:
+    # Runs automatically every single day
+    - cron: '0 8 * * *' 
+  workflow_dispatch: # Adds a manual "Run" button so you can test it anytime!
+
+jobs:
+  update-clips:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Vault AI Script
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python update_vault.py
+
+      - name: Save and Publish Updates to Website
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Automated update: Injected newest YouTube clips into The Vault" || exit 0
+          git push
