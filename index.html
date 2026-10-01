@@ -46,11 +46,51 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin-bottom: 40px;
         }
         iframe { border: none; border-radius: 8px; }
+
+        /* The Vault Video Grid Styles */
+        .vault-container {
+            margin: 0 auto 40px auto;
+            max-width: 960px;
+            padding: 20px;
+            background-color: #18181b;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        .vault-title {
+            color: #bf94ff;
+            text-transform: uppercase;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .vault-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 vertical ratio for Shorts/TikToks */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
         
+        /* Soundboard Styles */
         .soundboard-container {
-            margin: 40px auto;
+            margin: 0 auto 40px auto;
             max-width: 600px;
             padding: 20px;
             background-color: #18181b;
@@ -94,7 +134,6 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 25px;
             flex-wrap: wrap;
             padding-bottom: 30px;
         }
@@ -125,7 +164,6 @@
     <img src="chibi.png" alt="CoffeeZoomer Mascot" class="logo">
     <h1>CoffeeZoomer</h1>
     
-    <!-- The Interactive Quote Feature -->
     <div class="quote" id="quote-box" onclick="generateQuote()">"reminds of facebook 2004 when it started xD" - Ricky</div>
     <div class="quote-hint">(Click to cycle quotes)</div>
     
@@ -143,6 +181,25 @@
             height="540"
             width="350">
         </iframe>
+    </div>
+
+    <!-- The Vault Video Grid -->
+    <div class="vault-container">
+        <div class="vault-title"><i class="fa-solid fa-film"></i> The Tilt Vault</div>
+        <div class="vault-grid">
+            <!-- Video 1 -->
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <!-- Video 2 -->
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+            <!-- Video 3 -->
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
 
     <div class="soundboard-container">
@@ -167,14 +224,12 @@
     </div>
 
     <script>
-        // Soundboard logic
         function playSound(audioId) {
             var sound = document.getElementById(audioId);
             sound.currentTime = 0; 
             sound.play();
         }
 
-        // Quote Generator logic
         const quotes = [
             '"reminds of facebook 2004 when it started xD" - Ricky',
             '"Five daggers on Nasus is a highly tactical investment." - Ricky',
@@ -186,9 +241,7 @@
 
         function generateQuote() {
             const quoteBox = document.getElementById('quote-box');
-            // Pick a random number between 0 and the total number of quotes
             const randomIndex = Math.floor(Math.random() * quotes.length);
-            // Replace the text on the screen with the newly selected quote
             quoteBox.innerText = quotes[randomIndex];
         }
     </script>
